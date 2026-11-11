@@ -1,6 +1,6 @@
 cask "switcher" do
   version "0.1.0"
-  sha256 "0db41031a8523e9de7f957bcda9d2a822b37bda923e46b667325ef995072060f"
+  sha256 "53038f95d05b4c5fa7a366c86e3cd6c3931796a3b6703889b87243d87daf3ebd"
 
   url "https://github.com/raydocs/switcher/releases/download/v#{version}/Switcher.zip"
   name "Switcher"
