@@ -7,14 +7,15 @@ cask "switcher" do
   desc "Switch Claude Desktop and Antigravity between your accounts"
   homepage "https://github.com/raydocs/switcher"
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "Switcher.app"
   binary "#{appdir}/Switcher.app/Contents/Resources/switcher"
 
   # Ad-hoc signed, not notarized: without this macOS refuses to open it.
-  postflight do
-    system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{appdir}/Switcher.app"]
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Switcher.app"],
+                          writable_paths: ["Switcher.app"], writable_base: :appdir
   end
 
   uninstall quit: "dev.switcher.app"
